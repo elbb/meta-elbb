@@ -18,6 +18,7 @@ do_install_append_rpi() {
   install -d ${D}/mnt/data/home/work
   install -d ${D}/mnt/data/home/upper
   install -d ${D}/mnt/data/var/lib/
+  install -d -m 777 ${D}/mnt/data/var/lib/iotedge
 }
 FILES_${PN}_append = " /mnt/"
 SYSTEMD_SERVICE_${PN} += "etc.mount mnt-etc.mount"
