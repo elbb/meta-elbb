@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.0] unreleased
 
+- add tpm udev rules (tpm-udev.bb)
+- use IMAGE_ROOTFS_MAXSIZE as input size for partition layout
+- fail if rootfs exceeds IMAGE_ROOTFS_MAXSIZE (in kb)
+- added elbb (update)image wich uses A/B partition layout
 - added meta-elbb-raspberrypi layer which configures raspberrypi builds
 - added raspberrypi partition layout which supports A/B updates
 - raspberrypi rootfs is readonly
