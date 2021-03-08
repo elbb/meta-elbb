@@ -1,0 +1,14 @@
+[Unit]
+Description=Expand data partition
+DefaultDependencies=no
+Before=mnt-data.mount mnt-etc.mount umount.target
+After=boot.mount
+Conflicts=umount.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/expand-data.sh
+
+[Install]
+WantedBy=multi-user.target
