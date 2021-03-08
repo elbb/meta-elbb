@@ -12,7 +12,7 @@ data_part=$(readlink -f /dev/disk/by-label/data)
 root_disk=${data_part%p*}
 data_part_nr=${data_part##*p}
 
-[[ $(parted ${root_disk} print all | grep extended | wc -l) -ne 1 ]] && echo "error: couldn't determine number of extended partion" && exit 1
+[[ $(parted ${root_disk} print all | grep extended | wc -l) -ne 1 ]] && echo "error: couldn't determine extended partion" && exit 1
 extended_part_nr=$(parted ${root_disk} print all | grep extended | awk '{print $1}')
 
 parted ${root_disk} resizepart ${extended_part_nr} 100%

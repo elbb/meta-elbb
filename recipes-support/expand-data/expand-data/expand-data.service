@@ -4,6 +4,7 @@ DefaultDependencies=no
 Before=mnt-data.mount mnt-etc.mount umount.target
 After=boot.mount
 Conflicts=umount.target
+ConditionPathExists=!/boot/data-expanded
 
 [Service]
 Type=oneshot
