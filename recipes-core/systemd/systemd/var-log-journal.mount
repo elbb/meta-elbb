@@ -1,0 +1,13 @@
+[Unit]
+Before=local-fs.target
+After=mnt-data.mount
+RequiresMountsFor=/mnt/data
+
+[Mount]
+Where=/var/log/journal
+What=/mnt/data/journal
+Type=none
+Options=bind
+
+[Install]
+WantedBy=local-fs.target

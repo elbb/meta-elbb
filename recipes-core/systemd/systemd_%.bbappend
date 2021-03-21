@@ -1,7 +1,11 @@
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+
+SRC_URI += "file://var-log-journal.mount"
+
 do_install_append() {
     #persistent journal
     if ${@bb.utils.contains('DISTRO_FEATURES', 'persistent-journal', 'true', 'false', d)}; then
-        sed -i -E 's/^After=(.*)$/After=\1 etc.mount mnt-data.mount/' ${D}/lib/systemd/system/systemd-journald.service
+        sed -i -E 's/^After=(.*)$/After=\1 etc.mount var-log-journal.mount/' ${D}/lib/systemd/system/systemd-journald.service
         sed -i 's/^#Storage=auto/Storage=persistent/' ${D}${sysconfdir}/systemd/journald.conf
 
         [ ! -z ${JOURNALD_SystemMaxUse} ]       && sed -i 's/^#SystemMaxUse=/SystemMaxUse=${JOURNALD_SystemMaxUse} /' ${D}${sysconfdir}/systemd/journald.conf
@@ -15,9 +19,8 @@ do_install_append() {
 
         install -m 775 -d ${D}/mnt/data/journal
         chgrp systemd-journal ${D}/mnt/data/journal
-        rmdir ${D}${localstatedir}/log/journal
-        lnr ${D}/mnt/data/journal ${D}${localstatedir}/log/journal
     fi
 }
 
-FILES_${PN} += "${@bb.utils.contains('DISTRO_FEATURES', 'persistent-journal', '/mnt/data/journal', '', d)}"
+FILES_${PN} += "${@bb.utils.contains('DISTRO_FEATURES', 'persistent-journal', '/mnt/data/journal ${systemd_system_unitdir}/var-log-journal.mount', '', d)}"
+SYSTEMD_SERVICE_${PN} += "${@bb.utils.contains('DISTRO_FEATURES', 'persistent-journal', 'var-log-journal.mount', '', d)}"
