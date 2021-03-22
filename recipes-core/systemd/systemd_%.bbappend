@@ -17,8 +17,9 @@ do_install_append() {
         [ ! -z ${JOURNALD_RuntimeMaxFileSize} ] && sed -i 's/^#RuntimeMaxFileSize=/RuntimeMaxFileSize=${JOURNALD_RuntimeMaxFileSize} /' ${D}${sysconfdir}/systemd/journald.conf
         [ ! -z ${JOURNALD_RuntimeMaxFiles} ]    && sed -i 's/^#RuntimeMaxFiles=/RuntimeMaxFiles=${JOURNALD_RuntimeMaxFiles} /' ${D}${sysconfdir}/systemd/journald.conf
 
-        install -m 775 -d ${D}/mnt/data/journal
+        install -m 1750 -d ${D}/mnt/data/journal
         chgrp systemd-journal ${D}/mnt/data/journal
+        install -m 0644 ${WORKDIR}/var-log-journal.mount ${D}${systemd_system_unitdir}/
     fi
 }
 
