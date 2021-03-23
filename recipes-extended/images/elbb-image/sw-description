@@ -8,6 +8,7 @@ software =
 			copy1 : {
 				images: (
 					{
+						name = "@@SOFTWARE_NAME@@"
 						filename = "core-image-base-@@MACHINE@@.ext4.gz";
 						sha256 = "@core-image-base-@@MACHINE@@.ext4.gz";
 						type = "raw";
@@ -21,11 +22,11 @@ software =
 						value = "2";
 					}
 				);
-
 			};
 			copy2 : {
 				images: (
 					{
+						name = "@@SOFTWARE_NAME@@"
 						filename = "core-image-base-@@MACHINE@@.ext4.gz";
 						sha256 = "@core-image-base-@@MACHINE@@.ext4.gz";
 						type = "raw";
