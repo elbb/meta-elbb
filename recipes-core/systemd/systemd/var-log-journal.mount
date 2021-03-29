@@ -8,6 +8,7 @@ Where=/var/log/journal
 What=/mnt/data/journal
 Type=none
 Options=bind
+DirectoryMode=2750
 
 [Install]
 WantedBy=local-fs.target
