@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.0] unreleased
 
+- tpm configuration and packages are only added when DISTRO_FEATURES includes 'tpm'
 - add tpm udev rules (tpm-udev.bb)
 - use IMAGE_ROOTFS_MAXSIZE as input size for partition layout
 - fail if rootfs exceeds IMAGE_ROOTFS_MAXSIZE (in kb)
