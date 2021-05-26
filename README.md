@@ -5,8 +5,6 @@
 This yocto meta layer provides
 * additional version information in `/etc/os-release` using [bb-gitversion](https://github.com/elbb/bb-gitversion)
 
-An example integration can be found in [bb-yocto-builder](https://github.com/elbb/bb-yocto-builder).
-
 # What is embedded linux building blocks
 
 embedded linux building blocks is a project to create reusable and
@@ -29,4 +27,4 @@ submitted for inclusion in the work by you, as defined in the Apache-2.0
 license, shall be dual licensed as above, without any additional terms or
 conditions.
 
-Copyright (c) 2020 conplement AG
+Copyright (c) 2020-2021 conplement AG
