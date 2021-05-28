@@ -8,7 +8,7 @@ SRC_URI += " \
   file://var-lib.mount \
   "
 
-do_install_append_rpi() {
+do_install_append() {
   install -d ${D}${systemd_system_unitdir}
   install -m 0644 ${WORKDIR}/etc.mount ${D}${systemd_system_unitdir}/
   install -m 0644 ${WORKDIR}/home.mount ${D}${systemd_system_unitdir}/
